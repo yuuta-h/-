@@ -1,8 +1,9 @@
 #include "Result.h"
 #include "textDX.h"
+#include "game.h"
 
 void initializeResult() {};
-void updateResult() {};
+void updateResult() { changeScene(); };
 void drawResult() {
 };
 void printResult() {
