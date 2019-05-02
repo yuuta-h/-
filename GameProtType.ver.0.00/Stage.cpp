@@ -4,6 +4,7 @@
 #include "messageDialog.h"
 #include "inputDialog.h"
 #include "object.h"//êºêÏ
+#include "game.h"
 
 MessageDialog mDialog;
 InputDialog inDialog;
@@ -17,6 +18,7 @@ void initializeStage() {
 void updateStage() {
 	inDialog.update();
 	mDialog.update();
+	changeScene();
 	if (getMouseMButton())
 	{
 		inDialog.print("please InputText");

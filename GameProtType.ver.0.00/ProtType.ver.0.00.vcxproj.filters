@@ -43,6 +43,9 @@
     <Filter Include="ドメイン\メッセージダイアログ">
       <UniqueIdentifier>{07793791-7ab6-41de-87c8-c890aeb80160}</UniqueIdentifier>
     </Filter>
+    <Filter Include="アプリケーション\ステージ管理">
+      <UniqueIdentifier>{72ddab81-4ee4-442b-85cb-68de9da41b48}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -87,6 +90,12 @@
     <ClCompile Include="object.cpp">
       <Filter>アプリケーション\オブジェクト</Filter>
     </ClCompile>
+    <ClCompile Include="read_text.cpp">
+      <Filter>アプリケーション\ステージ管理</Filter>
+    </ClCompile>
+    <ClCompile Include="Select_Game.cpp">
+      <Filter>アプリケーション\シーン</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -130,6 +139,12 @@
     </ClInclude>
     <ClInclude Include="object.h">
       <Filter>アプリケーション\オブジェクト</Filter>
+    </ClInclude>
+    <ClInclude Include="read_text.h">
+      <Filter>アプリケーション\ステージ管理</Filter>
+    </ClInclude>
+    <ClInclude Include="Select_Game.h">
+      <Filter>アプリケーション\シーン</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
