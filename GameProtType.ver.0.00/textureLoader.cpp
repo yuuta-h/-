@@ -21,6 +21,7 @@ TextureLoader::TextureLoader()
 	textureName[textureLoaderNS::TITLE_SELECT_STAGE] = { "TEXTURE/stage_select.png" };
 	textureName[textureLoaderNS::TITLE_CURSOR] = { "TEXTURE/cursor.png" };
 	textureName[textureLoaderNS::PAUSE] = { "TEXTURE/pause.png" };
+	textureName[textureLoaderNS::PAUSE_BLACK] = { "TEXTURE/black.png" };
 	textureName[textureLoaderNS::THUM_STAGE01] = { "TEXTURE/stage01.png" };
 	
 	// 一時的にステージ2以降も白画像配置

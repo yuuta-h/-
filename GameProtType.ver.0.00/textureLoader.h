@@ -22,6 +22,7 @@ namespace textureLoaderNS
 		THUM_STAGE08,
 		THUM_STAGE09,
 		PAUSE,
+		PAUSE_BLACK,
 		//‚±‚±‚Ü‚Å
 		MAX_TEXTURE,
 	};

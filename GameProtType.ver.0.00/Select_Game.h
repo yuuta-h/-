@@ -21,14 +21,18 @@ namespace titleNS
 	const float CURSOR_CHOOSE_HEIGHT = 1317 / 30;
 	const float THUM_STAGE_WIDTH = 200;
 	const float THUM_STAGE_HEIGHT = 100;
-	const float PAUSE_WIDTH = 1600 / 30;
-	const float PAUSE_HEIGHT = 573 / 30;
+	const float PAUSE_WIDTH = 1600 / 7;
+	const float PAUSE_HEIGHT = 573 / 7;
 
 	// Cursor位置の調整
-	const float CURSOR_SELECT_FIX_X = 200;
-	const float CURSOR_SELECT_FIX_Y = 0;
-	const float CURSOR_CHOOSE_FIX_X = 50;
-	const float CURSOR_CHOOSE_FIX_Y = 30;
+	const int CURSOR_SELECT_FIX_X = 200;
+	const int CURSOR_SELECT_FIX_Y = 0;
+	const int CURSOR_CHOOSE_FIX_X = 50;
+	const int CURSOR_CHOOSE_FIX_Y = 30;
+
+	// Cursor の移動
+	const float CURSOR_UPDOWN = 3;
+	const float CURSOR_LEFTRIGHT = 1;
 }
 
 enum MOVE_CURSOR_SELECT
@@ -85,7 +89,7 @@ void drawChooseStage();
 // ポーズ処理　一時的にここに記述
 void updatePause();
 void drawPause();
-
+bool *getPause();
 
 
 // ここまで

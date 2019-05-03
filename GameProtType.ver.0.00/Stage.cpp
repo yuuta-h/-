@@ -5,6 +5,7 @@
 #include "inputDialog.h"
 #include "object.h"//¼ì
 #include "game.h"
+#include "Select_Game.h" // ”óÀ’Ç‰Á
 
 MessageDialog mDialog;
 InputDialog inDialog;
@@ -16,18 +17,28 @@ void initializeStage() {
 	initializeObject(0);//¼ì
 };
 void updateStage() {
-	inDialog.update();
-	mDialog.update();
-	changeScene();
-	if (getMouseMButton())
+
+	// ”óÀ’Ç‰Á
+	// timer‚Ímain‚É‚ ‚é‚©‚çA‚»‚±‚Åif•¶‚·‚é‚©A‚±‚±‚Étimer‚ğ‚Á‚Ä‚­‚é‚©‚Ç‚¿‚ç‚ª‚¢‚¢‚©
+	bool p_pause = *getPause();
+	updatePause();
+	if (p_pause == FALSE)
+	// ‘å‘Ì‚±‚±‚Ü‚Å
 	{
-		inDialog.print("please InputText");
+		inDialog.update();
+		mDialog.update();
+		changeScene();
+		if (getMouseMButton())
+		{
+			inDialog.print("please InputText");
+		}
 	}
 };
 void drawStage() {
 	inDialog.draw();
 	//mDialog.draw();
 	drawObject();//¼ì
+	drawPause(); // ”óÀ
 };
 
 void printStage() {

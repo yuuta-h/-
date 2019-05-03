@@ -10,7 +10,7 @@
 #include "object.h"
 
 using namespace titleNS;
-Image title, title_press_enter, new_game, choose_stage, cursor, pause;
+Image title, title_press_enter, new_game, choose_stage, cursor, pause, pause_black;
 Image stage01, stage02, stage03, stage04, stage05, stage06, stage07, stage08, stage09;
 int g_cursor = 0;
 
@@ -120,12 +120,20 @@ void initSelectTitle() {
 	height = THUM_STAGE_HEIGHT;
 	InitImage(&stage09, getTexture(textureLoaderNS::THUM_STAGE09), x, y, width, height);
 
-	
+	//
 	x = WINDOW_WIDTH / 3;
-	y = WINDOW_HEIGHT / 2.8;
+	y = WINDOW_HEIGHT / 5;
 	width = PAUSE_WIDTH;
 	height = PAUSE_HEIGHT;
 	InitImage(&pause, getTexture(textureLoaderNS::PAUSE), x, y, width, height);
+
+	//
+	x = 0;
+	y = 0;
+	width = WINDOW_WIDTH;
+	height = WINDOW_HEIGHT;
+	InitImage(&pause_black, getTexture(textureLoaderNS::PAUSE_BLACK), x, y, width, height);
+	SetColorImage(&pause_black, D3DXCOLOR(0.3f, 0.3f, 1.0f, 0.9f));
 }
 
 void updateSelectTitle() {
@@ -151,7 +159,6 @@ void updateSelectTitle() {
 
 void drawSelectTitle()
 {
-	//pDevice->SetRenderState(D3DRS_LIGHTING, TRUE);
 	int *scene = getScene();
 	switch (*scene)
 	{
@@ -274,19 +281,19 @@ int moveStageCursor(int scene)
 	{
 		if (GetKeyboardTrigger(DIK_RIGHT))
 		{
-			return 1;
+			return CURSOR_LEFTRIGHT;
 		}
 		if (GetKeyboardTrigger(DIK_LEFT))
 		{
-			return -1;
+			return -CURSOR_LEFTRIGHT;
 		}
 		if (GetKeyboardTrigger(DIK_UP))
 		{
-			return -3;
+			return -CURSOR_UPDOWN;
 		}
 		if (GetKeyboardTrigger(DIK_DOWN))
 		{
-			return 3;
+			return CURSOR_UPDOWN;
 		}
 	}
 }
@@ -358,7 +365,7 @@ void moveCursorPos(Image* image)
 void drawTitleStart()
 {
 	DrawImage(&title);
-	DrawImage(&title_press_enter);
+	DrawImage(&title_press_enter);	
 }
 void drawSelectMode()
 {
@@ -389,18 +396,19 @@ void updatePause()
 {
 	if (GetKeyboardTrigger(DIK_P))
 	{
-		g_pause = TRUE;
+		g_pause = g_pause ? false : true;;
 	}
-	// updateStage()ì‡Ç…
-	// if(g_pause == FALSE) {èàóù}ÇÃï™Çâ¡Ç¶ÇÈ 
 }
 
 void drawPause()
 {
 	if (g_pause == TRUE)
 	{
+		DrawImage(&pause_black);
 		DrawImage(&pause);
 	}
 }
+
+bool *getPause() { return (&g_pause); }
 
 // Ç±Ç±Ç‹Ç≈
