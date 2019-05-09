@@ -23,12 +23,16 @@ namespace titleNS
 	const float THUM_STAGE_HEIGHT = 100;
 	const float PAUSE_WIDTH = 1600 / 7;
 	const float PAUSE_HEIGHT = 573 / 7;
+	const float PAUSE_RETURN_TITLE_WIDTH = 1197 /3;
+	const float PAUSE_RETURN_TITLE_HEIGHT = 201 /3;
 
 	// Cursorà íuÇÃí≤êÆ
 	const int CURSOR_SELECT_FIX_X = 200;
 	const int CURSOR_SELECT_FIX_Y = 0;
 	const int CURSOR_CHOOSE_FIX_X = 50;
 	const int CURSOR_CHOOSE_FIX_Y = 30;
+	const int CURSOR_PAUSE_FIX_X = 50;
+	const int CURSOR_PAUSE_FIX_Y = 5;
 
 	// Cursor ÇÃà⁄ìÆ
 	const float CURSOR_UPDOWN = 3;

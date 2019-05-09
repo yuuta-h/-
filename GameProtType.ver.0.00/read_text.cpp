@@ -11,7 +11,7 @@ using namespace std;
 ////=============================================================================
 ////　グローバル変数
 ////=============================================================================
-Stage *g_pStage;
+Stage *g_pStage = NULL;
 
 // 呼び出し用関数
 void read_Status_File(string file_name)
@@ -22,6 +22,7 @@ void read_Status_File(string file_name)
 	// インフォメーションファイルを開く
 	file_Open(file_name, information, stream_txt_name);
 	open_All_txt(file_name, stream_txt_name, information);
+	
 }
 
 // テキストの数字をそれぞれの変数に入れ込んでいく。
@@ -50,7 +51,7 @@ void substitution_Status_for_Structures_Var(istringstream &stream, int num_obj, 
 			continue;
 		}
 	}
-	printf("%d \n", g_pStage[current_txt].m_pObj[obj_number].hp);
+	printf("%d \n", g_pStage[current_txt].m_pObj[obj_number].hp);	
 	obj_number++;
 }
 
@@ -104,10 +105,12 @@ void open_All_txt(string file_name, stringstream &stream_txt_name, string *infor
 		stream_single_txt.str("");
 		stream_single_txt.clear(stringstream::goodbit);
 
+		
+		new char[current_txt]; // メモリリーク検査用
 		file_Open(single_txt_name, information, stream_single_txt); // stageファイルを順番に読んでいく
 		create_Origin_Object(stream_single_txt, current_txt);  // オブジェクトを作る
 		current_txt++; // 次のテキストに移る
-
+		
 	}
 }
 

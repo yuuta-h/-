@@ -10,7 +10,7 @@
 #include "object.h"
 
 using namespace titleNS;
-Image title, title_press_enter, new_game, choose_stage, cursor, pause, pause_black;
+Image title, title_press_enter, new_game, choose_stage, cursor, pause, pause_black, pause_return_title;
 Image stage01, stage02, stage03, stage04, stage05, stage06, stage07, stage08, stage09;
 int g_cursor = 0;
 
@@ -128,13 +128,21 @@ void initSelectTitle() {
 	InitImage(&pause, getTexture(textureLoaderNS::PAUSE), x, y, width, height);
 
 	//
+	x = WINDOW_WIDTH / 2.5;
+	y = WINDOW_HEIGHT / 2;
+	width = PAUSE_RETURN_TITLE_WIDTH;
+	height = PAUSE_RETURN_TITLE_HEIGHT;
+	InitImage(&pause_return_title, getTexture(textureLoaderNS::PAUSE_RETURN_TITLE), x, y, width, height);
+
+	//
 	x = 0;
 	y = 0;
 	width = WINDOW_WIDTH;
 	height = WINDOW_HEIGHT;
 	InitImage(&pause_black, getTexture(textureLoaderNS::PAUSE_BLACK), x, y, width, height);
-	SetColorImage(&pause_black, D3DXCOLOR(0.3f, 0.3f, 1.0f, 0.9f));
-}
+	SetColorImage(&pause_black, D3DXCOLOR(0.3f, 0.3f, 1.0f, 0.5f));
+
+	}
 
 void updateSelectTitle() {
 
@@ -221,7 +229,6 @@ int moveTitleCursor(int scene)
 		}
 	}
 }
-
 
 // ステージ選択
 void moveChooseStageCursor()
@@ -338,6 +345,10 @@ void changeCursorSize()
 		height = CURSOR_CHOOSE_HEIGHT;
 		setSize(&cursor, width, height);
 		break;
+	case STAGE:
+		width = CURSOR_CHOOSE_WIDTH;
+		height = CURSOR_CHOOSE_HEIGHT;
+		setSize(&cursor, width, height);
 	}
 }
 
@@ -356,6 +367,12 @@ void moveCursorPos(Image* image)
 	case CHOOSE_STAGE:
 		x = image->position.x - CURSOR_CHOOSE_FIX_X;
 		y = image->position.y + CURSOR_CHOOSE_FIX_Y;
+		setPosition(&cursor, x, y);
+		break;
+
+	case STAGE:
+		x = image->position.x - CURSOR_PAUSE_FIX_X;
+		y = image->position.y + CURSOR_PAUSE_FIX_Y;
 		setPosition(&cursor, x, y);
 		break;
 	}
@@ -394,9 +411,17 @@ bool g_pause = FALSE;
 
 void updatePause()
 {
+	int *scene = getScene();
+	changeCursorSize();
+	moveCursorPos(&pause_return_title);
 	if (GetKeyboardTrigger(DIK_P))
 	{
 		g_pause = g_pause ? false : true;;
+	}
+	if (g_pause == TRUE && GetKeyboardTrigger(DIK_RETURN))
+	{
+		g_pause = FALSE;
+		*scene = TITLE;
 	}
 }
 
@@ -406,6 +431,8 @@ void drawPause()
 	{
 		DrawImage(&pause_black);
 		DrawImage(&pause);
+		DrawImage(&pause_return_title);
+		DrawImage(&cursor);
 	}
 }
 

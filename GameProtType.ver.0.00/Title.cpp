@@ -15,7 +15,7 @@ Image back;
 
 
 void initializeTitle() {
-	InitImage(&back, getTexture(textureLoaderNS::BACK_GROUND), 0, 0, 1200, 900);
+	InitImage(&back, getTexture(textureLoaderNS::BACK_GROUND), 0, 0, 1536, 1152);
 
 	// 樋沼追加
 	string info_file = "information.txt"; // 読み込みファイル名＝ステージ番号

@@ -12,9 +12,8 @@ LPDIRECT3DTEXTURE9* getTexture(int i)
 
 TextureLoader::TextureLoader()
 {
-	textureName[textureLoaderNS::BACK_GROUND] = { "TEXTURE/backGround.png" };
-
 	// 樋沼追加
+	textureName[textureLoaderNS::BACK_GROUND] = { "TEXTURE/back_ground.png" };
 	textureName[textureLoaderNS::TITLE_LOGO] = { "TEXTURE/title_logo.png" };
 	textureName[textureLoaderNS::TITLE_PRESS_ENTER] = { "TEXTURE/press_enter.png" };
 	textureName[textureLoaderNS::TITLE_NEW_GAME] = { "TEXTURE/new_game.png" };
@@ -22,6 +21,7 @@ TextureLoader::TextureLoader()
 	textureName[textureLoaderNS::TITLE_CURSOR] = { "TEXTURE/cursor.png" };
 	textureName[textureLoaderNS::PAUSE] = { "TEXTURE/pause.png" };
 	textureName[textureLoaderNS::PAUSE_BLACK] = { "TEXTURE/black.png" };
+	textureName[textureLoaderNS::PAUSE_RETURN_TITLE] = { "TEXTURE/return_title.png" };
 	textureName[textureLoaderNS::THUM_STAGE01] = { "TEXTURE/stage01.png" };
 	
 	// 一時的にステージ2以降も白画像配置
