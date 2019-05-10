@@ -13,6 +13,7 @@ struct TextDX
 	
 };
 
+
 void initializeTextDX();
 void unInitializeTextDX();
 
@@ -21,3 +22,6 @@ int printTextDX(TextDX* text, const std::string &str, int x, int y);
 int printTextDX(TextDX* text, const std::string &str, int x, int y, float value);
 int printTextDX(TextDX* text, const std::string &str, int x, int y, int value);
 TextDX* getDebugFont();
+
+int txtLineReset(int newtop);//êºêÏ 0.02
+int txtLineBreak();//êºêÏ 0.02

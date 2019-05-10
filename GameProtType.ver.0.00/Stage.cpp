@@ -3,22 +3,22 @@
 #include "input.h"
 #include "messageDialog.h"
 #include "inputDialog.h"
-#include "object.h"//西川
-#include "game.h"
+#include "object.h"
 
 MessageDialog mDialog;
 InputDialog inDialog;
+
+StageObj stageObj;//西川 0.02
 
 void initializeStage() {
 	inDialog.initialize(getHWnd());
 	mDialog.initialize(getHWnd());
 	mDialog.print("Hello World");
-	initializeObject(0);//西川
+	initializeObject(&stageObj,0);//西川 0.02 ひとまず0ステージで
 };
 void updateStage() {
 	inDialog.update();
 	mDialog.update();
-	changeScene();
 	if (getMouseMButton())
 	{
 		inDialog.print("please InputText");
@@ -27,7 +27,7 @@ void updateStage() {
 void drawStage() {
 	inDialog.draw();
 	//mDialog.draw();
-	drawObject();//西川
+	drawObject(&stageObj);
 };
 
 void printStage() {
@@ -35,7 +35,8 @@ void printStage() {
 	printTextDX(getDebugFont(), "マウス中ボタンを押下で入力ダイアログボックスを表示する", 500, 30);
 	printTextDX(getDebugFont(), "mouseX:", 1000, 0, getMouseX());
 	printTextDX(getDebugFont(), "mouseY:", 1000, 30, getMouseY());
+	printObject(&stageObj);//西川 0.22
 };
 void unInitializeStage() {
-	uninitializeObject();//西川
+	uninitializeObject(&stageObj);
 };

@@ -2,6 +2,11 @@
 #ifndef _READ_TEXT_H_
 #define _READ_TEXT_H_
 
+#include <fstream>//西川0.02
+#include <iostream>//西川0.02
+#include <string>//西川0.02
+#include <sstream>//西川0.02
+using namespace std;//西川0.02
 
 
 // コメントの付け方や変数名についてアドバイスください。
@@ -20,7 +25,7 @@ typedef struct
 
 typedef struct
 {
-	
+
 	//string *stage_file;
 	Object *m_pObj = NULL;
 	int num_m_pObj;	// 行数 = オブジェクトの数
@@ -39,10 +44,10 @@ enum
 //*****************************************************************************
 
 // 呼び出し用関数　使うときはこの関数だけ
-void read_Status_File(string file_name); 
+void read_Status_File(string file_name);
 
 // 構造体Stageの初期化とテキストファイルを順番に渡していく関数
-void open_All_txt(string file_name, stringstream &strstream,  string *information);  // テキストファイルの数とファイル名をファイルの数だけ入れていく
+void open_All_txt(string file_name, stringstream &strstream, string *information);  // テキストファイルの数とファイル名をファイルの数だけ入れていく
 void file_Open(string file_name, string *stream_txt_name, stringstream &strstream); // ファイルをオープンし、stringとstreamに情報を格納する。
 
 // 構造体Objectに関する関数

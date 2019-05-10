@@ -1,7 +1,11 @@
 #include "textDX.h"
 
-
 TextDX debugFont;
+
+struct {
+	const int m_TOP = 100, m_SIZE = 25;//開始位置/行間隔
+	int m_y = m_TOP;
+}TxtLine;//西川 0.02
 
 void initializeTextDX()
 {
@@ -84,4 +88,16 @@ int printTextDX(TextDX* text,const std::string &str, int x, int y, int value)
 TextDX* getDebugFont()
 {
 	return &debugFont;
+}
+
+int txtLineReset(int newtop) {//西川 0.02
+	TxtLine.m_y = newtop;//行位置をセット(毎フレーム最初)
+
+	return TxtLine.m_TOP;//既定の初期値を取得
+//	txtLineReset(txtLineReset(0));//と書くと初期値でリセットされる
+}
+
+int txtLineBreak() {//西川 0.02
+	TxtLine.m_y += TxtLine.m_SIZE;//改行
+	return TxtLine.m_y - TxtLine.m_SIZE;
 }

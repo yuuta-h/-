@@ -4,27 +4,29 @@
 #include "main.h"
 #include "Image.h"
 
-enum objTypes{
+enum objTypes {
 	NO_TYPE = -1,
 		CHARA_PLAYER,
 		CHARA_BLACKHOLE,
+		CHARA_WHITEHOLE,
+		CHARA_COMET,
 		CHARA_KEY,
 		CHARA_COIN,
 		STAGE_HURDLE,
 		STAGE_WALL,
 		STAGE_LOCK,
 		EVENT_GOAL,
-	FROMFILE_TYPE_MAX,
+//	FROMFILE_TYPE_MAX,//西川0.03
 		UI_CURSOR,
 		UI_EFFECT,
 		UI_HP,
-	TYPE_MAX
+	TYPE_MAX,
+	FROMFILE_TYPE_MAX = UI_CURSOR//西川0.03
 };
 
 //shortは-0.5±32767.5、intは-0.5±2147483647.5
 
 //オブジェクトの一つ一つ
-//敵[0]か、敵[1]か、敵[2]か…etc
 typedef struct{
 	objTypes m_type;					//オブジェクトタイプ
 	short m_id;							//全タイプが入っている配列内の、自分の番号
@@ -44,9 +46,18 @@ typedef struct{
 	Image m_image;						//描画情報
 }ObjStr;//Structure
 
+typedef struct {//全部入ってる構造体
+	int m_STAGE;						//ステージ番号
+	int m_OBJNUM;						//オブジェクト数
+	ObjStr *m_Obj;						//オブジェクト
+}StageObj;
 
-bool initializeObject(int stage);
-void uninitializeObject(void);
-void updateObject(void);
-void drawObject(void);
+#define STUB_OBJNUM (100)	//ステージのデータ内にあるオブジェクトの総数/実際には外からもらう値
+#define PLUS_OBJNUM (5)		//ステージ側で保存する必要のないオブジェクト情報(UIなど)があればそれの数
 
+
+void initializeObject(StageObj* p_stgobj,int stage);
+void uninitializeObject(StageObj* p_stgobj);
+void updateObject(StageObj* p_stgobj);
+void drawObject(StageObj* p_stgobj);
+void printObject(StageObj* p_stgobj);

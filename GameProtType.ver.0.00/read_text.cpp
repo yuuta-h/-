@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define _CRT_SECURE_NO_WARNINGS
-#include <fstream>
-#include <iostream>
-#include <string>
-#include <sstream>
-using namespace std;
+#define _CRT_SECURE_NO_WARNINGS//西川0.02
+//#include <fstream>//西川0.02
+//#include <iostream>//西川0.02
+//#include <string>//西川0.02
+//#include <sstream>//西川0.02
+//using namespace std;//西川0.02
 #include "read_text.h"
 
 ////=============================================================================
@@ -59,7 +59,7 @@ void file_Open(string file_name, string *information, stringstream &strstream)
 {
 	ifstream fin; // ファイル読み込みクラス
 
-	file_name.insert(0,"stage\\");
+	file_name.insert(0, "stage\\");
 
 	fin.open(file_name, ios::in); // 指定したファイルを開く
 	if (!fin) {//エラー検知
@@ -103,7 +103,6 @@ void open_All_txt(string file_name, stringstream &stream_txt_name, string *infor
 
 		stream_single_txt.str("");
 		stream_single_txt.clear(stringstream::goodbit);
-
 		file_Open(single_txt_name, information, stream_single_txt); // stageファイルを順番に読んでいく
 		create_Origin_Object(stream_single_txt, current_txt);  // オブジェクトを作る
 		current_txt++; // 次のテキストに移る
@@ -113,12 +112,12 @@ void open_All_txt(string file_name, stringstream &stream_txt_name, string *infor
 
 // 実際に構造体に数字を代入していく
 void create_Origin_Object(stringstream &istream_single_txt, int current_txt)
-{	
+{
 	int num_comma; // コンマの数
 	int line_number = NULL;		// 今何行目？
 	int obj_number = 0;
 	current_txt--;
-	
+
 	string str_current_line;		// １行を保存する
 
 	while (getline(istream_single_txt, str_current_line))

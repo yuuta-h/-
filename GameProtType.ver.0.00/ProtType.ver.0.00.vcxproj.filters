@@ -46,6 +46,9 @@
     <Filter Include="アプリケーション\ステージ管理">
       <UniqueIdentifier>{72ddab81-4ee4-442b-85cb-68de9da41b48}</UniqueIdentifier>
     </Filter>
+    <Filter Include="アプリケーション\オブジェクト\リスト化">
+      <UniqueIdentifier>{6bb8f1f7-4974-4dd6-b114-309af4adf932}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -65,9 +68,6 @@
     </ClCompile>
     <ClCompile Include="Stage.cpp">
       <Filter>アプリケーション\シーン</Filter>
-    </ClCompile>
-    <ClCompile Include="game.cpp">
-      <Filter>アプリケーション\ゲーム管理</Filter>
     </ClCompile>
     <ClCompile Include="Timer.cpp">
       <Filter>ドメイン\タイマークラス</Filter>
@@ -93,8 +93,17 @@
     <ClCompile Include="read_text.cpp">
       <Filter>アプリケーション\ステージ管理</Filter>
     </ClCompile>
-    <ClCompile Include="Select_Game.cpp">
-      <Filter>アプリケーション\シーン</Filter>
+    <ClCompile Include="game.cpp">
+      <Filter>アプリケーション\ゲーム管理</Filter>
+    </ClCompile>
+    <ClCompile Include="typeList.cpp">
+      <Filter>アプリケーション\オブジェクト\リスト化</Filter>
+    </ClCompile>
+    <ClCompile Include="listUse.cpp">
+      <Filter>アプリケーション\オブジェクト\リスト化</Filter>
+    </ClCompile>
+    <ClCompile Include="objectList.cpp">
+      <Filter>アプリケーション\オブジェクト\リスト化</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -143,8 +152,14 @@
     <ClInclude Include="read_text.h">
       <Filter>アプリケーション\ステージ管理</Filter>
     </ClInclude>
-    <ClInclude Include="Select_Game.h">
-      <Filter>アプリケーション\シーン</Filter>
+    <ClInclude Include="typeList.h">
+      <Filter>アプリケーション\オブジェクト\リスト化</Filter>
+    </ClInclude>
+    <ClInclude Include="listUse.h">
+      <Filter>アプリケーション\オブジェクト\リスト化</Filter>
+    </ClInclude>
+    <ClInclude Include="objectList.h">
+      <Filter>アプリケーション\オブジェクト\リスト化</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
