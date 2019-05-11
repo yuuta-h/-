@@ -24,7 +24,7 @@ void uninitializeObjList(void) {
 void updateObjList(void){//‰¼
 	sortObjListByX(&xBasedList);
 
-	optimizeObjList(&compatList,&xBasedList, &resultList);
+//	optimizeObjList(&compatList,&xBasedList, &resultList);
 
 	Terminate(&resultList);
 }

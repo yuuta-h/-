@@ -8,8 +8,8 @@
 	// ノード
 	typedef struct __node_obj {
 		const ObjStr* mp_obj;				// データ
-		struct __node_obj *prev;			// 左ノードへのポインタ
-		struct __node_obj *next;			// 右ノードへのポインタ
+		struct __node_obj *prev;			// 前ノードへのポインタ
+		struct __node_obj *next;			// 後ノードへのポインタ
 	}Dn_obj;
 
 	// 循環・重連結リスト

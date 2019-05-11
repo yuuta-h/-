@@ -128,14 +128,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="audio.cpp" />
+    <ClCompile Include="collision.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="inputDialog.cpp" />
+    <ClCompile Include="object.cpp" />
     <ClCompile Include="objectList.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="messageDialog.cpp" />
-    <ClCompile Include="object.cpp" />
     <ClCompile Include="read_text.cpp" />
     <ClCompile Include="Result.cpp" />
     <ClCompile Include="listUse.cpp" />
@@ -148,15 +149,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="audio.h" />
+    <ClInclude Include="collision.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="input.h" />
     <ClInclude Include="listUse.h" />
     <ClInclude Include="Image.h" />
-    <ClInclude Include="input.h" />
     <ClInclude Include="inputDialog.h" />
+    <ClInclude Include="object.h" />
     <ClInclude Include="objectList.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="messageDialog.h" />
-    <ClInclude Include="object.h" />
     <ClInclude Include="read_text.h" />
     <ClInclude Include="Result.h" />
     <ClInclude Include="Stage.h" />

@@ -46,6 +46,9 @@
     <Filter Include="アプリケーション\ステージ管理">
       <UniqueIdentifier>{72ddab81-4ee4-442b-85cb-68de9da41b48}</UniqueIdentifier>
     </Filter>
+    <Filter Include="アプリケーション\オブジェクト\更新処理">
+      <UniqueIdentifier>{28cccebe-8f58-404c-afe4-aeedc275a874}</UniqueIdentifier>
+    </Filter>
     <Filter Include="アプリケーション\オブジェクト\リスト化">
       <UniqueIdentifier>{6bb8f1f7-4974-4dd6-b114-309af4adf932}</UniqueIdentifier>
     </Filter>
@@ -53,9 +56,6 @@
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>ドメイン\エントリポイント</Filter>
-    </ClCompile>
-    <ClCompile Include="input.cpp">
-      <Filter>ドメイン\入力</Filter>
     </ClCompile>
     <ClCompile Include="textDX.cpp">
       <Filter>ドメイン\テキスト表示</Filter>
@@ -66,17 +66,11 @@
     <ClCompile Include="Result.cpp">
       <Filter>アプリケーション\シーン</Filter>
     </ClCompile>
-    <ClCompile Include="Stage.cpp">
-      <Filter>アプリケーション\シーン</Filter>
-    </ClCompile>
     <ClCompile Include="Timer.cpp">
       <Filter>ドメイン\タイマークラス</Filter>
     </ClCompile>
     <ClCompile Include="Image.cpp">
       <Filter>ドメイン\イメージオブジェクト</Filter>
-    </ClCompile>
-    <ClCompile Include="textureLoader.cpp">
-      <Filter>ドメイン\テクスチャローダー</Filter>
     </ClCompile>
     <ClCompile Include="audio.cpp">
       <Filter>ドメイン\オーディオ</Filter>
@@ -86,9 +80,6 @@
     </ClCompile>
     <ClCompile Include="messageDialog.cpp">
       <Filter>ドメイン\メッセージダイアログ</Filter>
-    </ClCompile>
-    <ClCompile Include="object.cpp">
-      <Filter>アプリケーション\オブジェクト</Filter>
     </ClCompile>
     <ClCompile Include="read_text.cpp">
       <Filter>アプリケーション\ステージ管理</Filter>
@@ -105,13 +96,25 @@
     <ClCompile Include="objectList.cpp">
       <Filter>アプリケーション\オブジェクト\リスト化</Filter>
     </ClCompile>
+    <ClCompile Include="input.cpp">
+      <Filter>ドメイン\入力</Filter>
+    </ClCompile>
+    <ClCompile Include="textureLoader.cpp">
+      <Filter>ドメイン\テクスチャローダー</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage.cpp">
+      <Filter>アプリケーション\シーン</Filter>
+    </ClCompile>
+    <ClCompile Include="object.cpp">
+      <Filter>アプリケーション\オブジェクト</Filter>
+    </ClCompile>
+    <ClCompile Include="collision.cpp">
+      <Filter>アプリケーション\オブジェクト\更新処理</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
       <Filter>ドメイン\エントリポイント</Filter>
-    </ClInclude>
-    <ClInclude Include="input.h">
-      <Filter>ドメイン\入力</Filter>
     </ClInclude>
     <ClInclude Include="textDX.h">
       <Filter>ドメイン\テキスト表示</Filter>
@@ -146,9 +149,6 @@
     <ClInclude Include="messageDialog.h">
       <Filter>ドメイン\メッセージダイアログ</Filter>
     </ClInclude>
-    <ClInclude Include="object.h">
-      <Filter>アプリケーション\オブジェクト</Filter>
-    </ClInclude>
     <ClInclude Include="read_text.h">
       <Filter>アプリケーション\ステージ管理</Filter>
     </ClInclude>
@@ -160,6 +160,15 @@
     </ClInclude>
     <ClInclude Include="objectList.h">
       <Filter>アプリケーション\オブジェクト\リスト化</Filter>
+    </ClInclude>
+    <ClInclude Include="input.h">
+      <Filter>ドメイン\入力</Filter>
+    </ClInclude>
+    <ClInclude Include="object.h">
+      <Filter>アプリケーション\オブジェクト</Filter>
+    </ClInclude>
+    <ClInclude Include="collision.h">
+      <Filter>アプリケーション\オブジェクト\更新処理</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
