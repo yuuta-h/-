@@ -31,6 +31,7 @@ void UninitKeyboard(void);
 HRESULT UpdateKeyboard(void);
 
 HRESULT InitializeMouse(HINSTANCE hInst, HWND hWindow, bool capture); // マウスの初期化
+void UpdateMouse(void);
 void UninitMouse();						// マウスの終了処理
 
 HRESULT InitializePad(void);			// パッド初期化
@@ -64,6 +65,10 @@ bool mouseMButton;								// 中マウスボタンが押されている場合はtrue
 bool mouseRButton;								// マウスの右ボタンが押されている場合はtrue
 bool mouseX1Button;								// X1のマウスボタンが押されている場合はtrue
 bool mouseX2Button;								// X2のマウスボタンが押されている場合はtrue
+
+bool flag[5] = { false,false,false,false,false };
+bool mouseButtonTrigger[5] = { false,false,false,false,false };						// マウスのボタンが押された時一度だけtrue,順番は上準拠;						// マウスのボタンが押された時一度だけtrue,順番は上準拠
+
 
 //--------------------------------- game pad
 static LPDIRECTINPUTDEVICE8	pGamePad[GAMEPADMAX] = { NULL,NULL,NULL,NULL };// パッドデバイス
@@ -131,7 +136,7 @@ void UpdateInput(void)
 	UpdateKeyboard();
 
 	// マウスの更新
-	//UpdateMouse();
+	UpdateMouse();
 
 	// パッドの更新
 	UpdatePad();
@@ -343,6 +348,72 @@ HRESULT InitializeMouse(HINSTANCE hInst, HWND hWindow,bool capture)
 	return S_OK;
 }
 //---------------------------------------------------------
+void UpdateMouse(void) 
+{
+	if (getMouseLButton())
+	{
+		if (flag[0] == false) 
+		{
+			mouseButtonTrigger[0] = true;
+			flag[0] = true;
+		}
+		else
+		{
+			mouseButtonTrigger[0] = false;
+		}
+	}
+	else
+	{
+		if (flag[0] == true)
+		{
+
+			flag[0] = false;
+		}
+	}
+
+	if (getMouseMButton())
+	{
+		if (flag[1] == false)
+		{
+			mouseButtonTrigger[1] = true;
+			flag[1] = true;
+		}
+		else
+		{
+			mouseButtonTrigger[1] = false;
+		}
+	}
+	else
+	{
+		if (flag[1] == true)
+		{
+
+			flag[1] = false;
+		}
+	}
+
+	if (getMouseRButton())
+	{
+		if (flag[2] == false)
+		{
+			mouseButtonTrigger[2] = true;
+			flag[2] = true;
+		}
+		else
+		{
+			mouseButtonTrigger[2] = false;
+		}
+	}
+	else
+	{
+		if (flag[2] == true)
+		{
+
+			flag[2] = false;
+		}
+	}
+}
+//---------------------------------------------------------
 void UninitMouse()
 {
 	if (mouseCaptured)
@@ -424,17 +495,32 @@ int getMouseRawY() { return mouseRawY; }
 // 左マウスボタンの状態を戻す
 bool getMouseLButton() { return mouseLButton; }
 
+// 左マウスボタンのトリガー情報を戻す
+bool getMouseLButtonTrigger() { return mouseButtonTrigger[0]; }
+
 // 中央マウスボタンの状態を戻す
 bool getMouseMButton() { return mouseMButton; }
+
+// 中央マウスボタンのトリガー情報を戻す
+bool getMouseMButtonTrigger() { return mouseButtonTrigger[1]; }
 
 // 右マウスボタンの状態を戻す
 bool getMouseRButton() { return mouseRButton; }
 
+// 右マウスボタンのトリガー情報を戻す
+bool getMouseRButtonTrigger() { return mouseButtonTrigger[2]; }
+
 // X1マウスボタンの状態を戻す
 bool getMouseX1Button() { return mouseX1Button; }
 
+// X1マウスボタンのトリガー情報を戻す
+bool getMouseX1ButtonTrigger() { return mouseButtonTrigger[3]; }
+
 // X2マウスボタンの状態を戻す
 bool getMouseX2Button() { return mouseX2Button; }
+
+// X2マウスボタンのトリガー情報を戻す
+bool getMouseX2ButtonTrigger() { return mouseButtonTrigger[4]; }
 
 //================================================= game pad
 //---------------------------------------- コールバック関数

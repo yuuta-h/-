@@ -17,12 +17,10 @@ void initializeGame() {
 };
 
 void updateGame() {
-	
+	changeScene();
 	switch (scene)
 	{
 	case TITLE:		updateTitle();		break;
-	case SELECT_MODE: updateTitle(); break;	// îÛè¿í«â¡
-	case CHOOSE_STAGE: updateTitle(); break;	// îÛè¿í«â¡
 	case STAGE:		updateStage();	break;
 	case RESULT:		updateResult();	break;
 	default:	break;
@@ -33,8 +31,6 @@ void drawGame() {
 	switch (scene)
 	{
 	case TITLE:		drawTitle();break;
-	case SELECT_MODE: drawTitle(); break;	// îÛè¿í«â¡
-	case CHOOSE_STAGE: drawTitle(); break;	// îÛè¿í«â¡
 	case STAGE:		drawStage(); break;
 	case RESULT:		drawResult(); break;
 	default:	break;
@@ -46,8 +42,6 @@ void printGame()
 	switch (scene)
 	{
 	case TITLE:		printTitle(); break;
-	case SELECT_MODE: printTitle(); break;	// îÛè¿í«â¡
-	case CHOOSE_STAGE: printTitle(); break;	// îÛè¿í«â¡
 	case STAGE:		printStage(); break;
 	case RESULT:		printResult(); break;
 	default:	break;
@@ -66,13 +60,10 @@ void changeScene()
 	if(GetKeyboardTrigger(DIK_RETURN))
 	{
 		scene++;
+		initializeStage();
 		if (scene >= SCENE_NUM)
 		{
 			scene = 0;
 		}
 	}
 }
-
-// îÛè¿í«â¡
-int *getScene() { return (&scene); }
-// Ç±Ç±Ç‹Ç≈

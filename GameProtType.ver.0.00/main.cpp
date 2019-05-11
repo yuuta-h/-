@@ -154,7 +154,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 HRESULT InitWindow(HINSTANCE hInstance, int nCmdShow)
 {
 	// ウィンドウの初期化
-	static char szAppName[] = "GameProtType.ver.0.00";
+	static char szAppName[] = "GameProtType.ver.0.02";
 
 	WNDCLASSEX wc;
 	ZeroMemory(&wc, sizeof(wc));
