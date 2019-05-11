@@ -100,7 +100,7 @@ void initializeObject(StageObj *p_stgobj,int stage){
 			StubObj[i].m_pos = { WINDOW_WIDTH * float(StubObj[i].m_type) / float(FROMFILE_TYPE_MAX),0.0f };
 			if (k == CHARA_PLAYER)
 				StubObj[i].m_pos = { 0.0f,(float)WINDOW_CENTER_Y };
-			StubObj[i].m_rot = D3DX_PI * 0.5f;
+			StubObj[i].m_rot = 0.0f;
 			StubObj[i].m_scl = { 10.0f,10.0f };
 			StubObj[i].m_speed = { 0.0f,0.0f };
 			StubObj[i].m_accel = { 0.0f,0.0f };
@@ -235,7 +235,7 @@ void initializeObject(StageObj *p_stgobj,int stage){
 		case CHARA_PLAYER:
 			//星
 			p_stgobj->m_Obj[i].m_use = true;
-			p_stgobj->m_Obj[i].m_pos = D3DXVECTOR2{ WINDOW_WIDTH , 450.0f};
+			p_stgobj->m_Obj[i].m_pos = D3DXVECTOR2{ 200.0f , 450.0f};
 			p_stgobj->m_Obj[i].m_speed.x = -1.0f;
 			plID = p_stgobj->m_Obj[i].m_id;
 			break;
@@ -262,7 +262,7 @@ void initializeObject(StageObj *p_stgobj,int stage){
 			break;
 		case STAGE_WALL:
 			p_stgobj->m_Obj[i].m_use = true;
-			p_stgobj->m_Obj[i].m_pos = D3DXVECTOR2{ 200.0f , 250.0f };
+			p_stgobj->m_Obj[i].m_pos = D3DXVECTOR2{ 400.0f , 250.0f };
 			p_stgobj->m_Obj[i].m_rect = { StubTex[i].width,StubTex[i].height };
 			//動かせない壁　地面とか
 			break;
@@ -380,6 +380,8 @@ void printObject(StageObj* p_stgobj) {
 		printTextDX(getDebugFont(), "x", int(p_stgobj->m_Obj[i].m_pos.x), txtLineBreak(), p_stgobj->m_Obj[i].m_pos.x);
 		printTextDX(getDebugFont(), "y", int(p_stgobj->m_Obj[i].m_pos.x), txtLineBreak(), p_stgobj->m_Obj[i].m_pos.y);
 	}
+
+	/*************************************************
 	printTextDX(getDebugFont(), "Length",0, 90, objectLength(&p_stgobj->m_Obj[plID],&p_stgobj->m_Obj[bhID]));
 	printTextDX(getDebugFont(), "BH_att.x", 0, 120, p_stgobj->m_Obj[bhID].m_attract.x);
 	printTextDX(getDebugFont(), "BH_att.y", 0, 150, p_stgobj->m_Obj[bhID].m_attract.y);
@@ -387,6 +389,21 @@ void printObject(StageObj* p_stgobj) {
 	printTextDX(getDebugFont(), "PL_speed.y", 0, 210, p_stgobj->m_Obj[plID].m_speed.y);
 	printTextDX(getDebugFont(), "PL_accel.x", 0, 240, p_stgobj->m_Obj[plID].m_accel.x);
 	printTextDX(getDebugFont(), "PL_accel.y", 0, 270, p_stgobj->m_Obj[plID].m_accel.y);
+	****************************************************/
+
+	D3DXVECTOR2 center = computeRotatedBox(&p_stgobj->m_Obj[plID]);
+	printTextDX(getDebugFont(), "PL_corner.左上x", 0, 90, p_stgobj->m_Obj[plID].m_corner[0].x);
+	printTextDX(getDebugFont(), "PL_corner.左上y", 0, 120, p_stgobj->m_Obj[plID].m_corner[0].y);
+	printTextDX(getDebugFont(), "PL_corner.右上x", 0, 150, p_stgobj->m_Obj[plID].m_corner[1].x);
+	printTextDX(getDebugFont(), "PL_corner.右上y", 0, 180, p_stgobj->m_Obj[plID].m_corner[1].y);
+	printTextDX(getDebugFont(), "PL_corner.左下x", 0, 210, p_stgobj->m_Obj[plID].m_corner[2].x);
+	printTextDX(getDebugFont(), "PL_corner.左下y", 0, 240, p_stgobj->m_Obj[plID].m_corner[2].y);
+	printTextDX(getDebugFont(), "PL_corner.右下x", 0, 270, p_stgobj->m_Obj[plID].m_corner[3].x);
+	printTextDX(getDebugFont(), "PL_corner.右下y", 0, 300, p_stgobj->m_Obj[plID].m_corner[3].y);
+
+	printTextDX(getDebugFont(), "PL_center.x", 0, 330, center.x);
+	printTextDX(getDebugFont(), "PL_center.y", 0, 360, center.y);
+
 }
 
 
@@ -442,6 +459,7 @@ void setObjFromFile(ObjStr *obj, int i, Stage* p_fromstage){
 
 		obj->m_rad = StubObj[i].m_rad;
 		obj->m_rect = StubObj[i].m_rect;
+		obj->m_rect = { StubTex[i].width,StubTex[i].height };
 	}
 	else {//ステージデータが空のタイプになっていたら
 		*obj = cleanObj(i);
@@ -495,6 +513,7 @@ void setObjTex(ObjStr* obj, int i) {//ObjにStubTexの中身をセット
 }
 
 void updatePlayer(ObjStr* p_obj) {
+	//p_obj->m_rot = D3DX_PI / 4;
 	p_obj->m_speed.x += p_obj->m_accel.x;	// 加速度を速度へ加算する
 	p_obj->m_speed.y += p_obj->m_accel.y;	// 加速度を速度へ加算する
 
@@ -516,8 +535,8 @@ void updatePlayer(ObjStr* p_obj) {
 		p_obj->m_speed.y = -2.0f;
 	}
 
-	p_obj->m_pos.x += p_obj->m_speed.x;			// 位置情報を速度で更新
-	p_obj->m_pos.y += p_obj->m_speed.y;			// 位置情報を速度で更新
+	//p_obj->m_pos.x += p_obj->m_speed.x;			// 位置情報を速度で更新
+	//p_obj->m_pos.y += p_obj->m_speed.y;			// 位置情報を速度で更新
 
 };
 void updateBlackHole(ObjStr* p_obj) {

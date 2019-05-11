@@ -51,6 +51,8 @@ typedef struct _obj{
 
 	float m_rad;						//半径(プレイヤーの当たり判定とか)
 	D3DXVECTOR2 m_rect;					//矩形の辺長(ステージの当たり判定とか)
+	D3DXVECTOR2	m_corner[4];			// 衝突ボックスの各頂点に対するベクトル
+
 	//衝突以外でも使うなら配列になるかも(近寄ると動き出すとか、ブラックホールが吸い寄せ始める範囲とか)
 
 	Image m_image;						//描画情報

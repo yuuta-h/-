@@ -65,3 +65,36 @@ bool checkHitObjCR(ObjStr* p_obj1, ObjStr* p_obj2) {
 	return false;
 
 };
+
+// 回転している矩形の頂点を計算
+D3DXVECTOR2 computeRotatedBox(ObjStr* p_obj)
+{
+	// 現状、オブジェクトのm_posは左上の座標なので、中心を出す
+	D3DXVECTOR2 center = { (p_obj->m_pos.x + p_obj->m_rect.x / 2),(p_obj->m_pos.y + p_obj->m_rect.y / 2) };
+
+	// centerを中心としたローカル座標を用いて、回転後の座標を求める
+	p_obj->m_corner[0].x = center.x + ((p_obj->m_pos.x - center.x) * cos(p_obj->m_rot) - (p_obj->m_pos.y - center.y) * sin(p_obj->m_rot));
+	p_obj->m_corner[0].y = center.y + ((p_obj->m_pos.x - center.x) * sin(p_obj->m_rot) + (p_obj->m_pos.y - center.y) * cos(p_obj->m_rot));
+
+	p_obj->m_corner[1].x = center.x + ((p_obj->m_pos.x + p_obj->m_rect.x - center.x) * cos(p_obj->m_rot) - (p_obj->m_pos.y - center.y) * sin(p_obj->m_rot));
+	p_obj->m_corner[1].y = center.y + ((p_obj->m_pos.x + p_obj->m_rect.x - center.x) * sin(p_obj->m_rot) + (p_obj->m_pos.y - center.y) * cos(p_obj->m_rot));
+
+	p_obj->m_corner[2].x = center.x + ((p_obj->m_pos.x - center.x) * cos(p_obj->m_rot) - (p_obj->m_pos.y + p_obj->m_rect.y - center.y) * sin(p_obj->m_rot));
+	p_obj->m_corner[2].y = center.y + ((p_obj->m_pos.x - center.x) * sin(p_obj->m_rot) + (p_obj->m_pos.y + p_obj->m_rect.y - center.y) * cos(p_obj->m_rot));
+
+	p_obj->m_corner[3].x = center.x + ((p_obj->m_pos.x + p_obj->m_rect.x - center.x) * cos(p_obj->m_rot) - (p_obj->m_pos.y + p_obj->m_rect.y - center.y) * sin(p_obj->m_rot));
+	p_obj->m_corner[3].y = center.y + ((p_obj->m_pos.x + p_obj->m_rect.x - center.x) * sin(p_obj->m_rot) + (p_obj->m_pos.y + p_obj->m_rect.y - center.y) * cos(p_obj->m_rot));
+
+	return center;
+}
+
+//computeRotateBoxを元に回転している二つの矩形の当たり判定を取る
+/**
+bool checkHitRotateObjRR(ObjStr* p_obj1, ObjStr* p_obj2) {
+	//2つのオブジェクトのm_cornerを更新する
+	computeRotatedBox(p_obj1);
+	computeRotatedBox(p_obj2);
+
+
+}
+**/
