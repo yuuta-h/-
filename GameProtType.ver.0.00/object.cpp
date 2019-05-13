@@ -368,7 +368,7 @@ void drawObject(StageObj* p_stgobj){
 //		p_stgobj->m_Obj[i].m_pos.y += 0.01f;
 		if (p_stgobj->m_Obj[i].m_use == false) continue;
 		setPosition(&(p_stgobj->m_Obj[i].m_image), p_stgobj->m_Obj[i].m_pos.x , p_stgobj->m_Obj[i].m_pos.y);
-		setAngle(&(Obj[i].m_image), Obj[i].m_image.angle + 1);
+		setAngle(&(p_stgobj->m_Obj[i].m_image), p_stgobj->m_Obj[i].m_image.angle + 1);
 		DrawImage(&(p_stgobj->m_Obj[i].m_image));
 	}
 }
