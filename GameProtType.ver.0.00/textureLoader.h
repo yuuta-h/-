@@ -5,6 +5,14 @@
 namespace textureLoaderNS
 {
 	enum TEXTURE_NUMBER {
+//êºêÏ 0.22
+		STAR,
+		BLACK_HOLE,
+		WHITE_HOLE,
+		COMET,
+		PLANET,
+		WALL,
+
 		BACK_GROUND,
 		MAX_TEXTURE,
 	};

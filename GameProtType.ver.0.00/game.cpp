@@ -60,6 +60,7 @@ void changeScene()
 	if(GetKeyboardTrigger(DIK_RETURN))
 	{
 		scene++;
+		initializeStage();
 		if (scene >= SCENE_NUM)
 		{
 			scene = 0;

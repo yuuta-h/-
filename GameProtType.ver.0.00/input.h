@@ -100,14 +100,24 @@ int getMouseRawX();
 int getMouseRawY();
 // 左マウスボタンの状態を戻す
 bool getMouseLButton();
+// 左マウスボタンのトリガー情報を戻す
+bool getMouseLButtonTrigger();
 // 中央マウスボタンの状態を戻す
 bool getMouseMButton();
+// 中央マウスボタンのトリガー情報を戻す
+bool getMouseMButtonTrigger();
 // 右マウスボタンの状態を戻す
 bool getMouseRButton();
+// 右マウスボタンのトリガー情報を戻す
+bool getMouseRButtonTrigger();
 // X1マウスボタンの状態を戻す
 bool getMouseX1Button();
+// X1マウスボタンのトリガー情報を戻す
+bool getMouseX1ButtonTrigger();
 // X2マウスボタンの状態を戻す
 bool getMouseX2Button();
+// X2マウスボタンのトリガー情報を戻す
+bool getMouseX2ButtonTrigger();
 
 //---------------------------- game pad
 BOOL IsButtonPressed(int padNo, DWORD button);

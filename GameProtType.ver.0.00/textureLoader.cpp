@@ -12,7 +12,14 @@ LPDIRECT3DTEXTURE9* getTexture(int i)
 
 TextureLoader::TextureLoader()
 {
-	textureName[textureLoaderNS::BACK_GROUND] = { "TEXTURE/backGround.png" };
+//êºêÏ 0.22
+	textureName[textureLoaderNS::STAR] = { "TEXTURE/Star_kari.png" };
+	textureName[textureLoaderNS::BLACK_HOLE] = { "TEXTURE/BH_kari.png" };
+	textureName[textureLoaderNS::WHITE_HOLE] = { "TEXTURE/WH_kari.png" };
+	textureName[textureLoaderNS::COMET] = { "TEXTURE/comet.jpg" };
+	textureName[textureLoaderNS::PLANET] = { "TEXTURE/planet.jpg" };
+	textureName[textureLoaderNS::WALL] = { "TEXTURE/WALL_kari.h" };
+	textureName[textureLoaderNS::BACK_GROUND] = { "TEXTURE/gameBG.png" };
 }
 
 
