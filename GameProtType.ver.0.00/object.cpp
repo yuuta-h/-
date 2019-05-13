@@ -192,7 +192,10 @@ void drawObject(void){
 	for (int i = 0; i < OBJNUM; i++) {
 //		if (Obj[i].m_use == false) continue;
 		setPosition(&(Obj[i].m_image),Obj[i].m_pos.x, Obj[i].m_pos.y);
+		setAngle(&(Obj[i].m_image), Obj[i].m_image.angle+1);
 		DrawImage(&(Obj[i].m_image));
+
+
 	}
 }
 

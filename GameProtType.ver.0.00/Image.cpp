@@ -8,6 +8,7 @@ void InitImage(Image* image, LPDIRECT3DTEXTURE9* texture,
 	image->position = D3DXVECTOR3(x, y, 0.0f);
 	image->width = width;
 	image->height = height;
+	image->angle = 0;
 	image->color[0] = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
 	image->color[1] = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
 	image->color[2] = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
@@ -136,6 +137,41 @@ void setPosition(Image* image, float _x, float _y)
 		image->g_pD3DVtxBuffer->Unlock();
 	}
 };
+
+void setAngle(Image* image, float _angle)
+{
+	image->angle = _angle;
+	float x = image->position.x;
+	float y = image->position.y;
+	float angle = image->angle;
+	float width = image->width;
+	float height = image->height;
+	
+	//x = x * cosθ - y * sinθ
+	//y = x * sinθ + y * cosθ
+	float radian = D3DXToRadian(_angle);
+
+	{//頂点バッファの中身を埋める
+		VERTEX_2D *pVtx;
+
+		// 頂点データの範囲をロックし、頂点バッファへのポインタを取得
+		image->g_pD3DVtxBuffer->Lock(0, 0, (void**)&pVtx, 0);
+		 
+		// 頂点座標の設定
+		pVtx[0].vtx.x = x * cosf(radian) - y * sinf(radian);
+		pVtx[0].vtx.y = x * sinf(radian) + y * cosf(radian);
+		pVtx[1].vtx.x = (x+width) * cosf(radian) - y * sinf(radian);
+		pVtx[1].vtx.y = (x+width) * sinf(radian) + y * cosf(radian);
+		pVtx[2].vtx.x = x * cosf(radian) - (y+height) * sinf(radian);
+		pVtx[2].vtx.y = x * sinf(radian) + (y+height) * cosf(radian);
+		pVtx[3].vtx.x = (x+width) * cosf(radian) - (y+height) * sinf(radian);
+		pVtx[3].vtx.y = (x+width) * sinf(radian) + (y+height) * cosf(radian);
+
+		// 頂点データをアンロックする
+		image->g_pD3DVtxBuffer->Unlock();
+	}
+};
+
 
 // Imageのカラーを変更する
 void SetColorImage(Image* image, D3DXCOLOR color)
