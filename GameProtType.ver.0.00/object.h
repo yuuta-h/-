@@ -56,7 +56,7 @@ typedef struct _obj{
 	Image m_image;						//描画情報
 }ObjStr;//Structure
 
-typedef struct {//全部入ってる構造体
+typedef struct {//今やってるステージのことが全部入ってる構造体
 	int m_STAGE;						//ステージ番号
 	int m_OBJNUM;						//オブジェクト数
 	ObjStr *m_Obj;						//オブジェクト
@@ -71,3 +71,5 @@ void uninitializeObject(StageObj* p_stgobj);
 void updateObject(StageObj* p_stgobj);
 void drawObject(StageObj* p_stgobj);
 void printObject(StageObj* p_stgobj);
+
+float getObjectSizeLonger(ObjStr* p_obj);//西川0511

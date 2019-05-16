@@ -133,30 +133,29 @@
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="inputDialog.cpp" />
+    <ClCompile Include="dataList.cpp" />
     <ClCompile Include="object.cpp" />
-    <ClCompile Include="objectList.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="messageDialog.cpp" />
     <ClCompile Include="read_text.cpp" />
     <ClCompile Include="Result.cpp" />
-    <ClCompile Include="listUse.cpp" />
+    <ClCompile Include="useList.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="textDX.cpp" />
     <ClCompile Include="textureLoader.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Title.cpp" />
-    <ClCompile Include="typeList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="audio.h" />
     <ClInclude Include="collision.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="input.h" />
-    <ClInclude Include="listUse.h" />
+    <ClInclude Include="dataList.h" />
+    <ClInclude Include="useList.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="inputDialog.h" />
     <ClInclude Include="object.h" />
-    <ClInclude Include="objectList.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="messageDialog.h" />
     <ClInclude Include="read_text.h" />
@@ -166,7 +165,6 @@
     <ClInclude Include="textureLoader.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Title.h" />
-    <ClInclude Include="typeList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

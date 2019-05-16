@@ -87,15 +87,6 @@
     <ClCompile Include="game.cpp">
       <Filter>アプリケーション\ゲーム管理</Filter>
     </ClCompile>
-    <ClCompile Include="typeList.cpp">
-      <Filter>アプリケーション\オブジェクト\リスト化</Filter>
-    </ClCompile>
-    <ClCompile Include="listUse.cpp">
-      <Filter>アプリケーション\オブジェクト\リスト化</Filter>
-    </ClCompile>
-    <ClCompile Include="objectList.cpp">
-      <Filter>アプリケーション\オブジェクト\リスト化</Filter>
-    </ClCompile>
     <ClCompile Include="input.cpp">
       <Filter>ドメイン\入力</Filter>
     </ClCompile>
@@ -110,6 +101,12 @@
     </ClCompile>
     <ClCompile Include="collision.cpp">
       <Filter>アプリケーション\オブジェクト\更新処理</Filter>
+    </ClCompile>
+    <ClCompile Include="dataList.cpp">
+      <Filter>アプリケーション\オブジェクト\リスト化</Filter>
+    </ClCompile>
+    <ClCompile Include="useList.cpp">
+      <Filter>アプリケーション\オブジェクト\リスト化</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -152,15 +149,6 @@
     <ClInclude Include="read_text.h">
       <Filter>アプリケーション\ステージ管理</Filter>
     </ClInclude>
-    <ClInclude Include="typeList.h">
-      <Filter>アプリケーション\オブジェクト\リスト化</Filter>
-    </ClInclude>
-    <ClInclude Include="listUse.h">
-      <Filter>アプリケーション\オブジェクト\リスト化</Filter>
-    </ClInclude>
-    <ClInclude Include="objectList.h">
-      <Filter>アプリケーション\オブジェクト\リスト化</Filter>
-    </ClInclude>
     <ClInclude Include="input.h">
       <Filter>ドメイン\入力</Filter>
     </ClInclude>
@@ -169,6 +157,12 @@
     </ClInclude>
     <ClInclude Include="collision.h">
       <Filter>アプリケーション\オブジェクト\更新処理</Filter>
+    </ClInclude>
+    <ClInclude Include="dataList.h">
+      <Filter>アプリケーション\オブジェクト\リスト化</Filter>
+    </ClInclude>
+    <ClInclude Include="useList.h">
+      <Filter>アプリケーション\オブジェクト\リスト化</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

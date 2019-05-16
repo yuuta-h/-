@@ -25,3 +25,5 @@ TextDX* getDebugFont();
 
 int txtLineReset(int newtop);//¼ì 0.02
 int txtLineBreak();//¼ì 0.02
+
+void txtColorChange(TextDX* f, int a,int r,int g,int b);//¼ì0516/git 0.02

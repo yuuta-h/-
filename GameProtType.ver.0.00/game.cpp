@@ -64,5 +64,12 @@ void changeScene()
 		{
 			scene = 0;
 		}
+		switch (scene)//êºêÏ0515/git0.02
+		{
+		case TITLE: ; break;
+		case STAGE:	startStage(); break;
+		case RESULT: finishStage(); break;
+		default:	break;
+		}
 	}
 }

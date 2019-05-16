@@ -101,3 +101,7 @@ int txtLineBreak() {//西川 0.02
 	TxtLine.m_y += TxtLine.m_SIZE;//改行
 	return TxtLine.m_y - TxtLine.m_SIZE;
 }
+
+void txtColorChange(TextDX* f,int a, int r, int g, int b) {
+	f->color = SETCOLOR_ARGB(a, r, g, b); // 白色でデフォルト
+}//西川0516/git 0.02

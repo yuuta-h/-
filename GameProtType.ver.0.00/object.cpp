@@ -349,6 +349,13 @@ void printObject(StageObj* p_stgobj) {
 	}
 }
 
+float getObjectSizeLonger(ObjStr* p_obj) {
+	float dgnl = sqrtf((p_obj->m_rect.x * p_obj->m_rect.x +
+		p_obj->m_rect.y * p_obj->m_rect.y) / 2.0f) / 2.0f;
+	if (dgnl >= p_obj->m_rad) return dgnl;
+	else return p_obj->m_rad;
+}//西川0511
+
 
 /////以下オブジェクトセット系ローカル関数
 
