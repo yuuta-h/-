@@ -73,15 +73,16 @@ D3DXVECTOR2 computeRotatedBox(ObjStr* p_obj)
 	D3DXVECTOR2 center = { (p_obj->m_pos.x + p_obj->m_rect.x / 2),(p_obj->m_pos.y + p_obj->m_rect.y / 2) };
 
 	// centerを中心としたローカル座標を用いて、回転後の座標を求める
+	//左上
 	p_obj->m_corner[0].x = center.x + ((p_obj->m_pos.x - center.x) * cos(p_obj->m_rot) - (p_obj->m_pos.y - center.y) * sin(p_obj->m_rot));
 	p_obj->m_corner[0].y = center.y + ((p_obj->m_pos.x - center.x) * sin(p_obj->m_rot) + (p_obj->m_pos.y - center.y) * cos(p_obj->m_rot));
-
+	//右上
 	p_obj->m_corner[1].x = center.x + ((p_obj->m_pos.x + p_obj->m_rect.x - center.x) * cos(p_obj->m_rot) - (p_obj->m_pos.y - center.y) * sin(p_obj->m_rot));
 	p_obj->m_corner[1].y = center.y + ((p_obj->m_pos.x + p_obj->m_rect.x - center.x) * sin(p_obj->m_rot) + (p_obj->m_pos.y - center.y) * cos(p_obj->m_rot));
-
+	//左下
 	p_obj->m_corner[2].x = center.x + ((p_obj->m_pos.x - center.x) * cos(p_obj->m_rot) - (p_obj->m_pos.y + p_obj->m_rect.y - center.y) * sin(p_obj->m_rot));
 	p_obj->m_corner[2].y = center.y + ((p_obj->m_pos.x - center.x) * sin(p_obj->m_rot) + (p_obj->m_pos.y + p_obj->m_rect.y - center.y) * cos(p_obj->m_rot));
-
+	//右下
 	p_obj->m_corner[3].x = center.x + ((p_obj->m_pos.x + p_obj->m_rect.x - center.x) * cos(p_obj->m_rot) - (p_obj->m_pos.y + p_obj->m_rect.y - center.y) * sin(p_obj->m_rot));
 	p_obj->m_corner[3].y = center.y + ((p_obj->m_pos.x + p_obj->m_rect.x - center.x) * sin(p_obj->m_rot) + (p_obj->m_pos.y + p_obj->m_rect.y - center.y) * cos(p_obj->m_rot));
 
@@ -89,12 +90,15 @@ D3DXVECTOR2 computeRotatedBox(ObjStr* p_obj)
 }
 
 //computeRotateBoxを元に回転している二つの矩形の当たり判定を取る
-/**
+#if 0
 bool checkHitRotateObjRR(ObjStr* p_obj1, ObjStr* p_obj2) {
 	//2つのオブジェクトのm_cornerを更新する
 	computeRotatedBox(p_obj1);
 	computeRotatedBox(p_obj2);
-
-
+	
+	int cpa[8];
+	cpa[0] = ((p_obj1->m_corner[1].x - p_obj1 > m_corner[0].x) * (p_obj2->m_corner[0].y - p_obj1->m_corner[0].x)) - ((p_obj2->m_corner[0].x - p_obj1->m_corner[0].x) * (p_obj1->m_corner[1].y - p_obj1->m_corner[0].y));
+	cpa[1] = ((p_obj1->m_corner[1].x - p_obj1 > m_corner[0].x) * (p_obj2->m_corner[0].y - p_obj1->m_corner[0].x)) - ((p_obj2->m_corner[0].x - p_obj1->m_corner[0].x) * (p_obj1->m_corner[1].y - p_obj1->m_corner[0].y))
 }
-**/
+
+#endif

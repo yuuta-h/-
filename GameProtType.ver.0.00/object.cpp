@@ -535,8 +535,8 @@ void updatePlayer(ObjStr* p_obj) {
 		p_obj->m_speed.y = -2.0f;
 	}
 
-	//p_obj->m_pos.x += p_obj->m_speed.x;			// 位置情報を速度で更新
-	//p_obj->m_pos.y += p_obj->m_speed.y;			// 位置情報を速度で更新
+	p_obj->m_pos.x += p_obj->m_speed.x;			// 位置情報を速度で更新
+	tap_obj->m_pos.y += p_obj->m_speed.y;			// 位置情報を速度で更新
 
 };
 void updateBlackHole(ObjStr* p_obj) {
