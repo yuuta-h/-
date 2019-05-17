@@ -7,6 +7,7 @@ typedef struct {
 	LPDIRECT3DVERTEXBUFFER9 g_pD3DVtxBuffer = NULL;		// 頂点バッファインターフェースへのポインタ
 	D3DXCOLOR color[4]; // 画像の頂点カラー
 	D3DXVECTOR3 position; // 画像の位置
+	float angle; // 角度
 	float width; // 幅
 	float height; // 高さ
 	bool playAnime; // アニメーション再生フラグ
@@ -56,6 +57,8 @@ void SetTexture(Image* image, float ratioU, float ratioV);
 void setPosition(Image* image, float _x, float _y);
 // Imageのサイズを変更する
 void setSize(Image* image, float _width, float _height);
+// Imageの回転を変更する
+void setAngle(Image* image, float _angle);
 // Imageのカラーを変更する
 void SetColorImage(Image* image, D3DXCOLOR color);
 HRESULT MakeVertex(Image* image, LPDIRECT3DDEVICE9 pDevice);
